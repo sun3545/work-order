@@ -1,0 +1,33 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <input type="button" onclick="create_zip()" value="Create Zip" />
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.6.0/jszip.js"></script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+<script>
+    var urls = ['htt://cdn','https://cdn.bootcdn.net/ajax/libs/jszip/3.6.0/jszip.min.js','http://cdn','https://cdn']
+  const a= urls.filter(item=>{
+      if(item.includes("https://")||item.includes("http://")){
+          return item;
+      }
+    })
+    console.log(a)
+    function create_zip() {
+        var zip = new JSZip();
+        zip.file("file.txt", "content");
+
+        zip.file("file.txt").name // "file.txt"
+        zip.file("file.txt").async("string") // a promise of "content"
+        zip.file("file.txt").dir
+        zip.folder("sub").file("file.txt") 
+    }
+
+</script>
+
+</html>
