@@ -1,4 +1,5 @@
 import { fetchList } from "@/api/basic/orderbusiness";
+import {BusinessTableOption} from './commonBusiness'
 
 export const tableOption = {
   // private String id;
@@ -35,49 +36,50 @@ export const tableOption = {
         },
         children: {
           border: true,
-          column: [
-            {
-              type: "input",
-              label: "系统编号",
-              search: true,
-              searchSpan: 24,
-              prop: "orderId"
-            },
-            {
-              label: "订单编号",
-              prop: "clientOrderId"
-            },
-            {
-              label: "客户",
-              prop: "customerName"
-            },
-            {
-              label: "订单类型",
-              prop: "orderType"
-            },
-            {
-              label: "订单描述",
-              prop: "orderDesc"
-            },
-            {
-              label: "确认成交日期",
-              prop: "confirmTime",
-              format: "yyyy-MM-dd HH:mm:ss",
-              valueFormat: "yyyy-MM-dd HH:mm:ss"
-            },
-            {
-              label: "费率",
-              prop: "rate"
-            },
-            {
-              label: "注意事项",
-              prop: "attention"
-            },
-            {
-              label: "CRM负责人",
-              prop: "crmUser"
-            }
-          ]
+          column:BusinessTableOption.column,
+        //   column: [
+        //     {
+        //       type: "input",
+        //       label: "系统编号",
+        //       search: true,
+        //       searchSpan: 24,
+        //       prop: "orderId"
+        //     },
+        //     {
+        //       label: "订单编号",
+        //       prop: "clientOrderId"
+        //     },
+        //     {
+        //       label: "客户",
+        //       prop: "customerName"
+        //     },
+        //     {
+        //       label: "订单类型",
+        //       prop: "orderType"
+        //     },
+        //     {
+        //       label: "订单描述",
+        //       prop: "orderDesc"
+        //     },
+        //     {
+        //       label: "确认成交日期",
+        //       prop: "confirmTime",
+        //       format: "yyyy-MM-dd HH:mm:ss",
+        //       valueFormat: "yyyy-MM-dd HH:mm:ss"
+        //     },
+        //     {
+        //       label: "费率",
+        //       prop: "rate"
+        //     },
+        //     {
+        //       label: "注意事项",
+        //       prop: "attention"
+        //     },
+        //     {
+        //       label: "CRM负责人",
+        //       prop: "crmUser"
+        //     }
+        //   ]
         },
         // 匹配值
         formatter: row => {

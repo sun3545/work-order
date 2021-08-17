@@ -85,6 +85,12 @@
             scope.row.status
           }}</el-tag>
         </template>
+        <template slot-scope="scope" slot="orderId.status">
+            {{scope.row}}
+          <!-- <el-tag :type="scope.row.status == '已关闭' ? 'info' : 'danger'">{{
+            scope.row.status
+          }}</el-tag> -->
+        </template>
         <template slot-scope="scope" slot="reason">
           <span>{{ getReason(scope.row.reason) }}</span>
         </template>

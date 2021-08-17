@@ -8,7 +8,7 @@ export const tableOption = {
       prop: "participants",
       display: true,
       editDisabled: false,
-      slot:true,
+      slot: true,
       rules: [
         {
           required: true,
@@ -51,7 +51,12 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-          fetchList(Object.assign(data, page)).then(response => {
+          const newPage = {
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
+          fetchList(Object.assign(data, newPage)).then(response => {
             console.log("搜索条件为空");
             callback({
               total: response.data.data.total,
@@ -65,7 +70,12 @@ export const tableOption = {
           if (data) {
             return;
           }
-          fetchList(page).then(response => {
+          const newPage = {
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
+          fetchList(newPage).then(response => {
             console.log("分页信息为空", page);
             callback({
               total: response.data.data.total,
@@ -74,10 +84,10 @@ export const tableOption = {
           });
         }
         //分页查询信息
-        callback({
-          total: 0,
-          data: []
-        });
+        // callback({
+        //   total: 0,
+        //   data: []
+        // });
       }
     },
     {
@@ -103,14 +113,14 @@ export const tableOption = {
       type: "input",
       overHidden: true,
       label: "监督计划内容",
-      overHidden:true,
+      overHidden: true,
       prop: "content"
     },
     {
       type: "select",
       label: "监督状态",
       prop: "status",
-      search:true,
+      search: true,
       overHidden: true,
       addDisabled: false,
       addDisplay: false,
@@ -149,6 +159,6 @@ export const tableOption = {
   indexLabel: "序号",
   menuAlign: "center",
   align: "center",
-  searchLabelWidth:120,
+  searchLabelWidth: 120,
   searchMenuSpan: 6
 };

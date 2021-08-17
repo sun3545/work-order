@@ -62,7 +62,12 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-          fetchList(Object.assign(data, page)).then(response => {
+          const newPage = {
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
+          fetchList(Object.assign(data, newPage)).then(response => {
             callback({
               total: response.data.data.total,
               data: response.data.data.records
@@ -75,7 +80,12 @@ export const tableOption = {
           if (data) {
             return;
           }
-          fetchList(page).then(response => {
+          const newPage = {
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
+          fetchList(newPage).then(response => {
             callback({
               total: response.data.data.total,
               data: response.data.data.records
@@ -83,10 +93,10 @@ export const tableOption = {
           });
         }
         //分页查询信息
-        callback({
-          total: 0,
-          data: []
-        });
+        // callback({
+        //   total: 0,
+        //   data: []
+        // });
       }
     },
     {
@@ -176,7 +186,7 @@ export const tableOption = {
       label: "校准状态",
       prop: "status",
       search: true,
-      slot:true,
+      slot: true,
       addDisabled: false,
       addDisplay: false,
       editDisabled: false,
@@ -216,7 +226,7 @@ export const tableOption = {
   menuAlign: "center",
   align: "center",
   searchIcon: true,
-//   searchSpan: 8,
+  //   searchSpan: 8,
   searchLabelWidth: 90,
-  searchMenuSpan: 24,
+  searchMenuSpan: 24
 };
