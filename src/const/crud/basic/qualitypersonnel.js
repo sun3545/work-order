@@ -51,10 +51,10 @@ export const tableOption = {
         // 如果搜索条件不为空
         if (data) {
             const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
           fetchList(Object.assign(data, newPage)).then(response => {
             console.log("搜索条件为空");
             callback({
@@ -70,10 +70,10 @@ export const tableOption = {
             return;
           }
           const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
           fetchList(newPage).then(response => {
             console.log("分页信息为空",page);
             callback({

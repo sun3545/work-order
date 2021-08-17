@@ -62,7 +62,7 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-          const newPage = {
+            const newPage = {
             ...page,
             current: page.currentPage,
             size: page.pageSize
@@ -186,7 +186,7 @@ export const tableOption = {
       label: "校准状态",
       prop: "status",
       search: true,
-      slot: true,
+      slot:true,
       addDisabled: false,
       addDisplay: false,
       editDisabled: false,
@@ -226,7 +226,7 @@ export const tableOption = {
   menuAlign: "center",
   align: "center",
   searchIcon: true,
-  //   searchSpan: 8,
+//   searchSpan: 8,
   searchLabelWidth: 90,
-  searchMenuSpan: 24
+  searchMenuSpan: 24,
 };

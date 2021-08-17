@@ -56,7 +56,7 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-          const newPage = {
+            const newPage = {
             ...page,
             current: page.currentPage,
             size: page.pageSize
@@ -87,10 +87,10 @@ export const tableOption = {
           });
         }
         //分页查询信息
-        //    callback({
-        //       total: 0,
-        //       data: []
-        //     });
+        // callback({
+        //   total: 0,
+        //   data: []
+        // });
       }
     },
     {
@@ -157,7 +157,7 @@ export const tableOption = {
       label: "保养状态",
       prop: "status",
       search: true,
-      slot: true,
+      slot:true,
       addDisabled: false,
       addDisplay: false,
       editDisabled: false,

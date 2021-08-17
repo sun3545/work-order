@@ -63,7 +63,7 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-          const newPage = {
+            const newPage = {
             ...page,
             current: page.currentPage,
             size: page.pageSize
@@ -144,7 +144,7 @@ export const tableOption = {
       overHidden: true,
       label: "设备状态",
       prop: "status",
-      search: true,
+      search:true,
       slot: true,
       dicData: [
         {
