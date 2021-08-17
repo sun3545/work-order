@@ -1,6 +1,6 @@
 import { fetchList } from "@/api/basic/orderbusiness";
-import {BusinessTableOption} from './commonBusiness'
-
+import { BusinessTableOption } from "./commonBusiness";
+import { clientOptions } from "./commonClient";
 export const tableOption = {
   column: [
     {
@@ -27,51 +27,7 @@ export const tableOption = {
       },
       children: {
         border: true,
-        column:BusinessTableOption.column,
-
-        // column: [
-        //   {
-        //     type: "input",
-        //     label: "系统编号",
-        //     search: true,
-        //     searchSpan: 24,
-        //     prop: "orderId"
-        //   },
-        //   {
-        //     label: "订单编号",
-        //     prop: "clientOrderId"
-        //   },
-        //   {
-        //     label: "客户",
-        //     prop: "customerName"
-        //   },
-        //   {
-        //     label: "订单类型",
-        //     prop: "orderType"
-        //   },
-        //   {
-        //     label: "订单描述",
-        //     prop: "orderDesc"
-        //   },
-        //   {
-        //     label: "确认成交日期",
-        //     prop: "confirmTime",
-        //     format: "yyyy-MM-dd HH:mm:ss",
-        //     valueFormat: "yyyy-MM-dd HH:mm:ss"
-        //   },
-        //   {
-        //     label: "费率",
-        //     prop: "rate"
-        //   },
-        //   {
-        //     label: "注意事项",
-        //     prop: "attention"
-        //   },
-        //   {
-        //     label: "CRM负责人",
-        //     prop: "crmUser"
-        //   }
-        // ]
+        column: BusinessTableOption.column
       },
       // 匹配值
       formatter: row => {
@@ -89,11 +45,11 @@ export const tableOption = {
         }
         // 如果搜索条件不为空
         if (data) {
-            const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
+          const newPage = {
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
           fetchList(Object.assign(data, newPage)).then(response => {
             callback({
               total: response.data.data.total,
@@ -108,10 +64,10 @@ export const tableOption = {
             return;
           }
           const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
+            ...page,
+            current: page.currentPage,
+            size: page.pageSize
+          };
           fetchList(newPage).then(response => {
             callback({
               total: response.data.data.total,
@@ -126,94 +82,8 @@ export const tableOption = {
         // });
       }
     },
-    {
-      type: "table",
-      label: "客户名称",
-      prop: "customerId",
-      //   showColumn:false,
-      overHidden: true,
-      addDisabled: false,
-      addDisplay: false,
-      editDisabled: false,
-      editDisplay: false,
-      search: true,
-      //   formslot: true,
-      //   slot: true,
-      //   display: true,
-      props: {
-        label: "customerName",
-        value: "customerId"
-      },
-      children: {
-        border: true,
-        column: [
-          {
-            label: "客户名称",
-            prop: "customerName",
-            search: true,
-            searchSpan: 24
-          },
-          {
-            type: "input",
-            label: "客户编号",
-            //   prop: "customerId" //客户id
-            prop: "customerCode"
-          }
-        ]
-      },
-      // 匹配值
-      formatter: row => {
-        //   console.log(JSON.stringify(row));
-        if (!row.customerName) {
-          return "";
-        }
-        return row.customerName;
-      },
-      onLoad: ({ page, value, data }, callback) => {
-        // 首次加载查询对应的值
-        if (value) {
-          console.log("首次查询" + value);
-          return;
-        }
-        // 如果搜索条件不为空
-        if (data) {
-            const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
-          fetchList(Object.assign(data, newPage)).then(response => {
-            callback({
-              total: response.data.data.total,
-              data: response.data.data.records
-            });
-          });
-          return;
-        }
-        // 如果分页信息不为空
-        if (page) {
-          if (data) {
-            return;
-          }
-          const newPage = {
-                ...page,
-                current: page.currentPage,
-                size: page.pageSize
-              };
-          fetchList(newPage).then(response => {
-            callback({
-              total: response.data.data.total,
-              data: response.data.data.records
-            });
-          });
-        }
-        //分页查询信息
-        // callback({
-        //   total: 0,
-        //   data: []
-        // });
-      }
-    },
+    //   客户公共提取
+    clientOptions,
     {
       type: "input",
       overHidden: true,
